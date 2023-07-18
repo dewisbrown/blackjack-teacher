@@ -56,7 +56,8 @@ public class GUI extends JFrame {
     }
 
     private JPanel getButtonPanel() {
-        JPanel buttonPanel = new JPanel(new GridLayout(5, 1));
+        JPanel buttonPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gc = new GridBagConstraints();
 
         JButton hit = new JButton("HIT");
         hit.setOpaque(true);
@@ -128,11 +129,17 @@ public class GUI extends JFrame {
             updateLabels();
         });
 
-        buttonPanel.add(start);
-        buttonPanel.add(hit);
-        buttonPanel.add(stand);
-        buttonPanel.add(doubleDown);
-        buttonPanel.add(split);
+        gc.gridx = 0;
+        gc.gridy = GridBagConstraints.RELATIVE;
+        gc.fill = GridBagConstraints.BOTH;
+        gc.ipadx = 10;
+        gc.ipady = 10;
+
+        buttonPanel.add(start, gc);
+        buttonPanel.add(hit, gc);
+        buttonPanel.add(stand, gc);
+        buttonPanel.add(doubleDown, gc);
+        buttonPanel.add(split, gc);
 
         return buttonPanel;
     }
