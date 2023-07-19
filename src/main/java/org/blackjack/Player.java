@@ -26,9 +26,25 @@ public class Player {
 
     public int getHandValue() {
         int value = 0;
-        for (Card card : hand) {
-            value += card.getValue();
+        int[] aceIndex = new int[10];
+        boolean hasAce = false;
+        int j = 0;
+
+        for (int i = 0; i < hand.size(); i++) {
+            if (Objects.equals(hand.get(i).getRank(), "A")) {
+                hasAce = true;
+                aceIndex[j] = i;
+                j++;
+            }
+            value += hand.get(i).getValue();
         }
+
+        // change ace value to 1 if hand value > 21
+        while (value > 21 && hasAce) {
+            hand.get(aceIndex[--j]).setValue(1);
+            value -= 10;
+        }
+
         return value;
     }
 
