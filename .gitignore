@@ -26,6 +26,4 @@ replay_pid*
 # intelliJ
 target/
 .idea/
-test/
 *.iml
-*.xml
