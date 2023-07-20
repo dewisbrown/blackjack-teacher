@@ -66,6 +66,10 @@ public class BlackjackGUI {
         return player.getHandValue() <= 21;
     }
 
+    public boolean canDouble() {
+        return player.getHand().size() == 2;
+    }
+
     public boolean split() {
         return player.canSplit();
     }

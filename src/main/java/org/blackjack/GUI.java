@@ -62,15 +62,15 @@ public class GUI extends JFrame {
         JButton hit = new JButton("HIT");
         hit.setOpaque(true);
         hit.addActionListener(e -> {
-            if (bj.isCorrectAction(Action.HIT)) {
-                hit.setBackground(new Color(0, 255, 0));
-                System.out.println("Correct!");
-            } else {
-                hit.setBackground(new Color(255, 0, 0));
-                System.out.println("Wrong! You should have " + bj.getCorrectAction().toString());
-            }
-
             if (bj.canHit()) {
+                if (bj.isCorrectAction(Action.HIT)) {
+                    hit.setBackground(new Color(0, 255, 0));
+                    System.out.println("Correct!");
+                } else {
+                    hit.setBackground(new Color(255, 0, 0));
+                    System.out.println("Wrong! You should have " + bj.getCorrectAction().toString());
+                }
+
                 bj.hitPlayer();
                 updateLabels();
 
@@ -100,17 +100,21 @@ public class GUI extends JFrame {
         JButton doubleDown = new JButton("DOUBLE");
         doubleDown.setOpaque(true);
         doubleDown.addActionListener(e -> {
-            if (bj.isCorrectAction(Action.DOUBLE)) {
-                doubleDown.setBackground(new Color(0, 255, 0));
-                System.out.println("Correct!");
-            } else {
-                doubleDown.setBackground(new Color(255, 0, 0));
-                System.out.println("Wrong! You should have " + bj.getCorrectAction().toString());
-            }
+            if (bj.canDouble()) {
+                if (bj.isCorrectAction(Action.DOUBLE)) {
+                    doubleDown.setBackground(new Color(0, 255, 0));
+                    System.out.println("Correct!");
+                } else {
+                    doubleDown.setBackground(new Color(255, 0, 0));
+                    System.out.println("Wrong! You should have " + bj.getCorrectAction().toString());
+                }
 
-            bj.hitPlayer();
-            bj.hitDealer();
-            updateLabels();
+                bj.hitPlayer();
+                bj.hitDealer();
+                updateLabels();
+            } else {
+                System.out.println("You cannot double!");
+            }
         });
 
         JButton split = new JButton("SPLIT");
