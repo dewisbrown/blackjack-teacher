@@ -147,7 +147,7 @@ public class BlackjackGUI {
         }
 
         for (int i = 4; i < 22; i++) {
-            for (int j = 4; j < 8; j++) {
+            for (int j = 2; j < 8; j++) {
                 pairActionMap.put(new Pair(i, j), Action.NONE);
             }
         }
