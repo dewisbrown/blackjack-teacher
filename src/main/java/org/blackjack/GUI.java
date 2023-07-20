@@ -63,10 +63,10 @@ public class GUI extends JFrame {
         hit.setOpaque(true);
         hit.addActionListener(e -> {
             if (bj.isCorrectAction(Action.HIT)) {
-                hit.setBackground(new Color(0, 155, 0));
+                hit.setBackground(new Color(0, 255, 0));
                 System.out.println("Correct!");
             } else {
-                hit.setBackground(new Color(155, 0, 0));
+                hit.setBackground(new Color(255, 0, 0));
                 System.out.println("Wrong! You should have " + bj.getCorrectAction().toString());
             }
 
@@ -86,10 +86,10 @@ public class GUI extends JFrame {
         stand.setOpaque(true);
         stand.addActionListener(e -> {
             if (bj.isCorrectAction(Action.STAY)) {
-                stand.setBackground(new Color(0, 155, 0));
+                stand.setBackground(new Color(0, 255, 0));
                 System.out.println("Correct!");
             } else {
-                stand.setBackground(new Color(155, 0, 0));
+                stand.setBackground(new Color(255, 0, 0));
                 System.out.println("Wrong! You should have " + bj.getCorrectAction().toString());
             }
 
@@ -101,10 +101,10 @@ public class GUI extends JFrame {
         doubleDown.setOpaque(true);
         doubleDown.addActionListener(e -> {
             if (bj.isCorrectAction(Action.DOUBLE)) {
-                doubleDown.setBackground(new Color(0, 155, 0));
+                doubleDown.setBackground(new Color(0, 255, 0));
                 System.out.println("Correct!");
             } else {
-                doubleDown.setBackground(new Color(155, 0, 0));
+                doubleDown.setBackground(new Color(255, 0, 0));
                 System.out.println("Wrong! You should have " + bj.getCorrectAction().toString());
             }
 
