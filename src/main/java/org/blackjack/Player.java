@@ -1,6 +1,7 @@
 package org.blackjack;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Stack;
 
 public class Player {
     private final ArrayList<Card> hand;
@@ -26,23 +27,25 @@ public class Player {
 
     public int getHandValue() {
         int value = 0;
-        int[] aceIndex = new int[10];
+        Stack<Integer> aceIndex = new Stack<>();
         boolean hasAce = false;
-        int j = 0;
 
         for (int i = 0; i < hand.size(); i++) {
             if (Objects.equals(hand.get(i).getRank(), "A")) {
                 hasAce = true;
-                aceIndex[j] = i;
-                j++;
+                aceIndex.push(i);
             }
             value += hand.get(i).getValue();
         }
 
-        // change ace value to 1 if hand value > 21
+        // change ace value to 1 if hand value > 21 and recount
         while (value > 21 && hasAce) {
-            hand.get(aceIndex[--j]).setValue(1);
-            value -= 10;
+            hand.get(aceIndex.pop()).setValue(1);
+
+            value = 0;
+            for (Card card : hand) {
+                value += card.getValue();
+            }
         }
 
         return value;
