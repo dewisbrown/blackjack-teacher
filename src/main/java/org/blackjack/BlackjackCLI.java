@@ -1,8 +1,6 @@
 package org.blackjack;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class BlackjackCLI {
     private ArrayList<Card> mainDeck;
@@ -118,11 +116,11 @@ public class BlackjackCLI {
     }
 
     private Action getAction() {
-        Scanner scnr = new Scanner(System.in);
         System.out.println("HIT [1], STAND [2], DOUBLE [3], SPLIT [4]");
-        char c = scnr.nextLine().charAt(0);
+        char c = getCharInput();
+
         switch (c) {
-            case '1': {
+            case '1' -> {
                 player.hit(deal());
                 printHands();
                 if (player.getHandValue() >= 21) {
@@ -130,12 +128,12 @@ public class BlackjackCLI {
                 }
                 return Action.HIT;
             }
-            case '3': {
+            case '3' -> {
                 player.hit(deal());
                 printHands();
                 return Action.STAY;
             }
-            case '4': {
+            case '4' -> {
                 if (player.canSplit()) {
                     System.out.println("You chose SPLIT");
                 } else {
@@ -143,7 +141,7 @@ public class BlackjackCLI {
                 }
                 return Action.SPLIT;
             }
-            default: {
+            default -> {
                 return Action.STAY;
             }
         }
@@ -175,6 +173,24 @@ public class BlackjackCLI {
     private void initDeck() {
         for (int i = 0; i < 6; i++) {
             mainDeck.addAll(new Deck().getDeck());
+        }
+    }
+
+    private char getCharInput() {
+        String validInputs = "1234";
+        Scanner scnr = new Scanner(System.in);
+
+        while (true) {
+            String line = scnr.nextLine();
+            if (line.length() == 0) {
+                System.err.println("Enter a valid option: 1, 2, 3, 4");
+                continue;
+            }
+            if (validInputs.indexOf(line.charAt(0)) > -1) {
+                return line.charAt(0);
+            } else {
+                System.err.println("Enter a valid option: 1, 2, 3, 4");
+            }
         }
     }
 }
