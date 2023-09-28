@@ -8,6 +8,7 @@ To try the program, download and execute the jar file: `java -jar blackjack-teac
 
 ### Exapmle Program Run
 ![program example screenshot](https://i.imgur.com/mSrs3OQ.png)
+(card symbols don't show properly, needs fix)
 
 ### Updates
 The program is run in the command line, and a GUI version is still being worked on. To try the current GUI version, uncomment `new GUI()` and comment out `new BlackjackCLI()` in App.java. Then rebuild the jar or run in an IDE.
