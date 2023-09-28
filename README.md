@@ -8,6 +8,7 @@ To try the program, download and execute the jar file: `java -jar blackjack-teac
 
 ### Exapmle Program Run
 ![program example screenshot](https://i.imgur.com/mSrs3OQ.png)
+
 (card symbols don't show properly, needs fix)
 
 ### Updates
